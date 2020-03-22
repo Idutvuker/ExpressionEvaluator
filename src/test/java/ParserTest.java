@@ -10,10 +10,18 @@ class ParserTest {
 
 	@Test
 	void parse() {
-		Parser p = new Parser();
 
-		List<String> actual = Parser.parse("(( 0.3 35 222/2*2(\n))");
-		List<String> expected = Arrays.asList("(", "(", "0.3", "35", "222", "/", "2", "*", "2", "(", ")", ")");
+		List<String> actual = Parser.parse("(( 0.3 35 222/2*2(\n))*sin(22+33)");
+		List<String> expected = Arrays.asList("(", "(", "0.3", "35", "222", "/", "2", "*", "2", "(", ")", ")",
+												"*","sin","(","22","+","33",")");
+
+		assertEquals(expected, actual);
+
+		actual = Parser.parse("pow(2.3, 3)");
+		expected = Arrays.asList("pow", "(", "2.3", ",", "3", ")");
+		assertEquals(expected, actual);
+		actual = Parser.parse("cos (  sin (sin(1)) * 2)");
+		expected = Arrays.asList("cos", "(", "sin", "(", "sin", "(", "1", ")", ")", "*", "2", ")");
 
 		assertEquals(expected, actual);
 

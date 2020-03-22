@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.lang.Math;
 
 public class Evaluator
 {
@@ -53,6 +54,18 @@ public class Evaluator
 		return left;
 	}
 
+	private float parse_pow(MyIterator iterator) {
+		assert(iterator.get().equals("("));
+		iterator.next();
+		float a = parse_sum(iterator);
+		assert(iterator.get().equals(","));
+		iterator.next();
+		float b = parse_sum(iterator);
+		assert(iterator.get().equals(")"));
+		iterator.next();
+		return (float) Math.pow(a, b);
+	}
+
 	private float parse_nested(MyIterator iterator) {
 		if (iterator.get().equals("(")) {
 			iterator.next();
@@ -61,6 +74,30 @@ public class Evaluator
 			iterator.next();
 			return e;
 		}
+		if (iterator.get().equals("sin")) {
+			iterator.next();
+			assert(iterator.get().equals("("));
+			iterator.next();
+			float e = (float) Math.sin(parse_sum(iterator));
+			assert(iterator.get().equals(")"));
+			iterator.next();
+			return e;
+		}
+		if (iterator.get().equals("pow")) {
+			iterator.next();
+			return parse_pow(iterator);
+		}
+
+		if (iterator.get().equals("cos")) {
+			iterator.next();
+			assert(iterator.get().equals("("));
+			iterator.next();
+			float e = (float) Math.cos(parse_sum(iterator));
+			assert(iterator.get().equals(")"));
+			iterator.next();
+			return e;
+		}
+
 		float f = Float.valueOf(iterator.get());
 		iterator.next();
 		return f;
