@@ -17,6 +17,11 @@ class ParserTest {
 
 		assertEquals(expected, actual);
 
+		actual = Parser.parse("cos (  sin (sin(1)) * 2)");
+		expected = Arrays.asList("cos", "(", "sin", "(", "sin", "(", "1", ")", ")", "*", "2", ")");
+
+		assertEquals(expected, actual);
+
 
 	}
 }

@@ -71,6 +71,17 @@ public class Evaluator
 			iterator.next();
 			return e;
 		}
+
+		if (iterator.get().equals("cos")) {
+			iterator.next();
+			assert(iterator.get().equals("("));
+			iterator.next();
+			float e = (float) Math.cos(parse_sum(iterator));
+			assert(iterator.get().equals(")"));
+			iterator.next();
+			return e;
+		}
+
 		float f = Float.valueOf(iterator.get());
 		iterator.next();
 		return f;
