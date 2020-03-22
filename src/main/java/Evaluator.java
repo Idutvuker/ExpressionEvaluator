@@ -54,6 +54,18 @@ public class Evaluator
 		return left;
 	}
 
+	private float parse_pow(MyIterator iterator) {
+		assert(iterator.get().equals("("));
+		iterator.next();
+		float a = parse_sum(iterator);
+		assert(iterator.get().equals(","));
+		iterator.next();
+		float b = parse_sum(iterator);
+		assert(iterator.get().equals(")"));
+		iterator.next();
+		return (float) Math.pow(a, b);
+	}
+
 	private float parse_nested(MyIterator iterator) {
 		if (iterator.get().equals("(")) {
 			iterator.next();
@@ -70,6 +82,10 @@ public class Evaluator
 			assert(iterator.get().equals(")"));
 			iterator.next();
 			return e;
+		}
+		if (iterator.get().equals("pow")) {
+			iterator.next();
+			return parse_pow(iterator);
 		}
 		float f = Float.valueOf(iterator.get());
 		iterator.next();

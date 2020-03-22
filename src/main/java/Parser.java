@@ -12,7 +12,7 @@ public class Parser
 	 */
 	public static ArrayList<String> parse(String line) {
 		ArrayList<String> list = new ArrayList<>();
-		StringTokenizer tokenizer = new StringTokenizer(line, " ()*/+-", true);
+		StringTokenizer tokenizer = new StringTokenizer(line, " ()*/+-,", true);
 
 		while (tokenizer.hasMoreTokens()) {
 			String token = tokenizer.nextToken();

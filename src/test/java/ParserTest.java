@@ -17,6 +17,8 @@ class ParserTest {
 
 		assertEquals(expected, actual);
 
-
+		actual = Parser.parse("pow(2.3, 3)");
+		expected = Arrays.asList("pow", "(", "2.3", ",", "3", ")");
+		assertEquals(expected, actual);
 	}
 }
