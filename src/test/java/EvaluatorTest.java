@@ -12,5 +12,6 @@ class EvaluatorTest {
 		assertEquals(evaluator.eval("1 + 1 / 3"), 1.3333333, 1e-5);
 		assertEquals(evaluator.eval("1 + sin(3 * 3.1415926535)"), 1.0, 1e-5);
 		assertEquals(evaluator.eval("pow(3 + 1, 3 -1)"), 16.0, 1e-5);
+		assertEquals(evaluator.eval("cos(sin(1))"), 0.66636674, 1e-5);
 	}
 }

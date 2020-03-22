@@ -20,5 +20,11 @@ class ParserTest {
 		actual = Parser.parse("pow(2.3, 3)");
 		expected = Arrays.asList("pow", "(", "2.3", ",", "3", ")");
 		assertEquals(expected, actual);
+		actual = Parser.parse("cos (  sin (sin(1)) * 2)");
+		expected = Arrays.asList("cos", "(", "sin", "(", "sin", "(", "1", ")", ")", "*", "2", ")");
+
+		assertEquals(expected, actual);
+
+
 	}
 }
