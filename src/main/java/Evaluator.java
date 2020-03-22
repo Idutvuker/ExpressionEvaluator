@@ -98,6 +98,16 @@ public class Evaluator
 			return e;
 		}
 
+		if (iterator.get().equals("e")) {
+			iterator.next();
+			return (float) Math.E;
+		}
+
+		if (iterator.get().equals("pi")) {
+			iterator.next();
+			return (float) Math.PI;
+		}
+
 		float f = Float.valueOf(iterator.get());
 		iterator.next();
 		return f;
