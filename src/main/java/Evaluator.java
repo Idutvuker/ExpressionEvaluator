@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.lang.Math;
 
 public class Evaluator
 {
@@ -57,6 +58,15 @@ public class Evaluator
 		if (iterator.get().equals("(")) {
 			iterator.next();
 			float e = parse_sum(iterator);
+			assert(iterator.get().equals(")"));
+			iterator.next();
+			return e;
+		}
+		if (iterator.get().equals("sin")) {
+			iterator.next();
+			assert(iterator.get().equals("("));
+			iterator.next();
+			float e = (float) Math.sin(parse_sum(iterator));
 			assert(iterator.get().equals(")"));
 			iterator.next();
 			return e;
