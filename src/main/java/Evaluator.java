@@ -78,7 +78,7 @@ public class Evaluator
 	private float parse_sin(MyIterator iterator) {
 		assert(iterator.get().equals("("));
 		iterator.next();
-		float e = (float) Math.cos(parse_sum(iterator));
+		float e = (float) Math.sin(parse_sum(iterator));
 		assert(iterator.get().equals(")"));
 		iterator.next();
 		return e;
@@ -99,7 +99,8 @@ public class Evaluator
 		}
 
 		if (iterator.get().equals("sin")) {
-			return parse_cos(iterator);
+			iterator.next();
+			return parse_sin(iterator);
 		}
 
 		if (iterator.get().equals("cos")) {
