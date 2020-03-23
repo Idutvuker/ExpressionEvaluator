@@ -15,5 +15,8 @@ class EvaluatorTest {
 		assertEquals(evaluator.eval("cos(sin(1))"), 0.66636674, 1e-5);
 
 		assertEquals(evaluator.eval("pow(cos(0.3), 2.0) + pow(sin(0.3), 2.0)"), 1.0, 1e-5);
+
+		assertEquals(evaluator.eval("cos(pi / 2.0)"), 0.0, 1e-5);
+		assertEquals(evaluator.eval("pow(e, 1.1447298858494002)"), Math.PI, 1e-5);
 	}
 }
