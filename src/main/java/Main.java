@@ -7,6 +7,8 @@ public class Main {
         Scanner scanner = new Scanner(System.in);
         Evaluator evaluator = new Evaluator();
 
+        System.out.println("Hello");
+
         System.out.println("Enter expression");
         while (true) {
             try {
