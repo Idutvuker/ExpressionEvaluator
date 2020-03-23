@@ -66,6 +66,24 @@ public class Evaluator
 		return (float) Math.pow(a, b);
 	}
 
+	private float parse_cos(MyIterator iterator) {
+		assert(iterator.get().equals("("));
+		iterator.next();
+		float e = (float) Math.cos(parse_sum(iterator));
+		assert(iterator.get().equals(")"));
+		iterator.next();
+		return e;
+	}
+
+	private float parse_sin(MyIterator iterator) {
+		assert(iterator.get().equals("("));
+		iterator.next();
+		float e = (float) Math.cos(parse_sum(iterator));
+		assert(iterator.get().equals(")"));
+		iterator.next();
+		return e;
+	}
+
 	private float parse_nested(MyIterator iterator) {
 		if (iterator.get().equals("(")) {
 			iterator.next();
@@ -74,28 +92,19 @@ public class Evaluator
 			iterator.next();
 			return e;
 		}
-		if (iterator.get().equals("sin")) {
-			iterator.next();
-			assert(iterator.get().equals("("));
-			iterator.next();
-			float e = (float) Math.sin(parse_sum(iterator));
-			assert(iterator.get().equals(")"));
-			iterator.next();
-			return e;
-		}
+
 		if (iterator.get().equals("pow")) {
 			iterator.next();
 			return parse_pow(iterator);
 		}
 
+		if (iterator.get().equals("sin")) {
+			return parse_cos(iterator);
+		}
+
 		if (iterator.get().equals("cos")) {
 			iterator.next();
-			assert(iterator.get().equals("("));
-			iterator.next();
-			float e = (float) Math.cos(parse_sum(iterator));
-			assert(iterator.get().equals(")"));
-			iterator.next();
-			return e;
+			return parse_cos(iterator);
 		}
 
 		if (iterator.get().equals("e")) {
